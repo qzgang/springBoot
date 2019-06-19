@@ -1,0 +1,18 @@
+{
+  "groups": [
+    {
+      "name": "spring.datasource.druid.db1",
+      "type": "javax.sql.DataSource",
+      "sourceType": "com.hrb.sso.common.config.MyBatiesPlusConfiguration",
+      "sourceMethod": "db1()"
+    },
+    {
+      "name": "spring.datasource.druid.db2",
+      "type": "javax.sql.DataSource",
+      "sourceType": "com.hrb.sso.common.config.MyBatiesPlusConfiguration",
+      "sourceMethod": "db2()"
+    }
+  ],
+  "properties": [],
+  "hints": []
+}
