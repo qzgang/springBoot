@@ -7,16 +7,16 @@ spring:
   datasource:
     druid:
       db1:
-        username: hurbao001_zl
-        password: hurbao001_zl
+        username: ***
+        password: ***
         driver-class-name: oracle.jdbc.OracleDriver
         url: jdbc:oracle:thin:@10.0.0.215:1521:hurbao
         initialSize: 5
         minIdle: 5
         maxActive: 20
       db2:
-        username: root
-        password: root
+        username: ***
+        password: ***
         driver-class-name: com.mysql.jdbc.Driver
         url: jdbc:mysql://10.0.0.53/dev_hurp2p_zl?useUnicode=true&characterEncoding=utf8
         initialSize: 5
