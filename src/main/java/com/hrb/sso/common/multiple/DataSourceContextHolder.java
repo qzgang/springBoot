@@ -1,9 +1,10 @@
 package com.hrb.sso.common.multiple;
 
+/**
+ * @author qzg
+ */
 public class DataSourceContextHolder {
-
     private static final ThreadLocal<String> contextHolder = new InheritableThreadLocal<>();
-
     /**
      *  设置数据源
      * @param db
@@ -11,7 +12,6 @@ public class DataSourceContextHolder {
     public static void setDataSource(String db){
         contextHolder.set(db);
     }
-
     /**
      * 取得当前数据源
      * @return
@@ -19,7 +19,6 @@ public class DataSourceContextHolder {
     public static String getDataSource(){
         return contextHolder.get();
     }
-
     /**
      * 清除上下文数据
      */
