@@ -32,18 +32,18 @@ public class MyBatiesPlusConfiguration {
      * 数据源oracle
      * @return
      */
-    @Bean(name = "db1")
-    @ConfigurationProperties(prefix = "spring.datasource.druid.db1" )
-    public DataSource db1() {
+    @Bean(name = "oracleDb")
+    @ConfigurationProperties(prefix = "spring.datasource.druid.oracle-db" )
+    public DataSource oracleDb() {
         return DruidDataSourceBuilder.create().build();
     }
     /**
      * 数据源mysql
      * @return
      */
-    @Bean(name = "db2")
-    @ConfigurationProperties(prefix = "spring.datasource.druid.db2" )
-    public DataSource db2() {
+    @Bean(name = "mysqlDb")
+    @ConfigurationProperties(prefix = "spring.datasource.druid.mysql-db" )
+    public DataSource mysqlDb() {
         return DruidDataSourceBuilder.create().build();
     }
 
@@ -53,15 +53,15 @@ public class MyBatiesPlusConfiguration {
      */
     @Bean
     @Primary
-    public DataSource multipleDataSource(@Qualifier("db1") DataSource db1, @Qualifier("db2") DataSource db2) {
+    public DataSource multipleDataSource(@Qualifier("oracleDb") DataSource oracleDb, @Qualifier("mysqlDb") DataSource mysqlDb) {
         MultipleDataSource multipleDataSource = new MultipleDataSource();
         Map< Object,Object> targetDataSources = new HashMap<>(2);
-        targetDataSources.put(DataSourceEnum.DB1.getValue(), db1);
-        targetDataSources.put(DataSourceEnum.DB2.getValue(), db2);
+        targetDataSources.put(DataSourceEnum.ORACLE_DB.getValue(), oracleDb);
+        targetDataSources.put(DataSourceEnum.MYSQL_DB.getValue(), mysqlDb);
         //添加数据源
         multipleDataSource.setTargetDataSources(targetDataSources);
         //设置默认数据源
-        multipleDataSource.setDefaultTargetDataSource(db1);
+        multipleDataSource.setDefaultTargetDataSource(oracleDb);
         return multipleDataSource;
     }
 
@@ -92,7 +92,7 @@ public class MyBatiesPlusConfiguration {
     public SqlSessionFactory sqlSessionFactory() throws Exception {
         MybatisSqlSessionFactoryBean sqlSessionFactory = new MybatisSqlSessionFactoryBean();
         //设置数据源
-        sqlSessionFactory.setDataSource(multipleDataSource(db1(),db2()));
+        sqlSessionFactory.setDataSource(multipleDataSource(oracleDb(),mysqlDb()));
         //设置配置
         MybatisConfiguration configuration = new MybatisConfiguration();
         configuration.setJdbcTypeForNull(JdbcType.NULL);

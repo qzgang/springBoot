@@ -5,6 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
 import org.springframework.cloud.zookeeper.config.ZookeeperConfigAutoConfiguration;
 
+/**
+ * @author
+ */
 @SpringBootApplication(exclude = ZookeeperConfigAutoConfiguration.class)
 public class Application {
 

@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * @author
+ */
 @Api("对学生表CRUD")
 @RestController
 @RequestMapping("/student")

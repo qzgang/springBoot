@@ -7,6 +7,9 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+/**
+ * @author
+ */
 @Api("老师实体对象")
 @Data
 @TableName("t_teacher")

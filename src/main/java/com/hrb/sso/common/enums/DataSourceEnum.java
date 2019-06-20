@@ -1,7 +1,10 @@
 package com.hrb.sso.common.enums;
 
+/**
+ * @author
+ */
 public enum DataSourceEnum {
-    DB1("db1"),DB2("db2");
+    ORACLE_DB("oracleDb"),MYSQL_DB("mysqlDb");
 
     private String value;
 
