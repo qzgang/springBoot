@@ -11,7 +11,7 @@ spring:
     cache: false    #页面不加载缓存，修改即时生效
   datasource:       #多数据源配置
     druid:
-      db1:
+      oracle-db:
         username: hurbao001_zl
         password: hurbao001_zl
         driver-class-name: oracle.jdbc.OracleDriver
@@ -19,7 +19,7 @@ spring:
         initialSize: 2
         minIdle: 2
         maxActive: 20
-      db2:
+      mysql-db:
         username: root
         password: root
         driver-class-name: com.mysql.jdbc.Driver
@@ -33,9 +33,9 @@ spring:
 mybatis-plus:
   # 如果是放在src/main/java目录下 classpath:/com/hrb/sso/*/mapper/*Mapper.xml
   # 如果是放在resource目录 classpath:/mapper/*Mapper.xml
-  mapper-locations: classpath:/mapper/*Mapper.xml
+  mapper-locations: classpath:/com/hrb/sso/*/dao/*Dao.xml
   # 实体扫描，多个package用逗号或者分号分隔
-  typeAliasesPackage: com.hrb.sso
+  typeAliasesPackage: com.hrb.sso.entity
   global-config:
     #主键类型  0:"数据库ID自增", 1:"用户输入ID",2:"全局唯一ID (数字类型唯一ID)", 3:"全局唯一ID UUID";
     id-type: 1
