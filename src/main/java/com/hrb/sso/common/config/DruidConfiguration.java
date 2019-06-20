@@ -20,7 +20,7 @@ public class DruidConfiguration {
         // IP白名单
         servletRegistrationBean.addInitParameter("allow","127.0.0.1");
         // IP黑名单(共同存在时，deny优先于allow)
-        servletRegistrationBean.addInitParameter("deny","127.0.0.1");
+        servletRegistrationBean.addInitParameter("deny","127.0.0.2");
         //控制台管理用户
         servletRegistrationBean.addInitParameter("loginUsername","root");
         servletRegistrationBean.addInitParameter("loginPassword","root");
