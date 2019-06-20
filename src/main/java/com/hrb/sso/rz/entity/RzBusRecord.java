@@ -5,6 +5,9 @@ import java.util.Date;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;
+import lombok.Data;
+import lombok.ToString;
+
 import java.io.Serializable;
 
 /**
@@ -16,6 +19,8 @@ import java.io.Serializable;
  * @since 2019-06-20
  */
 @TableName("rz_bus_record")
+@Data
+@ToString
 public class RzBusRecord implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -61,82 +66,4 @@ public class RzBusRecord implements Serializable {
     @TableField("DMODIFY_DATE")
     private Date dmodifyDate;
 
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getSmemberId() {
-        return smemberId;
-    }
-
-    public void setSmemberId(String smemberId) {
-        this.smemberId = smemberId;
-    }
-
-    public String getSname() {
-        return sname;
-    }
-
-    public void setSname(String sname) {
-        this.sname = sname;
-    }
-
-    public String getSgroupNo() {
-        return sgroupNo;
-    }
-
-    public void setSgroupNo(String sgroupNo) {
-        this.sgroupNo = sgroupNo;
-    }
-
-    public BigDecimal getInumberValue() {
-        return inumberValue;
-    }
-
-    public void setInumberValue(BigDecimal inumberValue) {
-        this.inumberValue = inumberValue;
-    }
-
-    public String getSremark() {
-        return sremark;
-    }
-
-    public void setSremark(String sremark) {
-        this.sremark = sremark;
-    }
-
-    public Date getDaddDate() {
-        return daddDate;
-    }
-
-    public void setDaddDate(Date daddDate) {
-        this.daddDate = daddDate;
-    }
-
-    public Date getDmodifyDate() {
-        return dmodifyDate;
-    }
-
-    public void setDmodifyDate(Date dmodifyDate) {
-        this.dmodifyDate = dmodifyDate;
-    }
-
-    @Override
-    public String toString() {
-        return "RzBusRecord{" +
-        ", id=" + id +
-        ", smemberId=" + smemberId +
-        ", sname=" + sname +
-        ", sgroupNo=" + sgroupNo +
-        ", inumberValue=" + inumberValue +
-        ", sremark=" + sremark +
-        ", daddDate=" + daddDate +
-        ", dmodifyDate=" + dmodifyDate +
-        "}";
-    }
 }
