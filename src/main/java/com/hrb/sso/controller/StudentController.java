@@ -25,9 +25,6 @@ public class StudentController {
     @PostMapping("/add")
     public String add(@RequestBody StudentVo student){
         Student stu = new Student();
-        stu.setName(student.getName());
-        stu.setAge(student.getAge());
-        stu.setClassname(student.getClassname());
         return studentService.insert(stu)?"添加成功":"添加失败";
     }
 
