@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
 import java.util.List;
-
 @Service
 public class TeacherServiceImpl extends ServiceImpl<TeacherMapper,Teacher> implements TeacherService {
 
