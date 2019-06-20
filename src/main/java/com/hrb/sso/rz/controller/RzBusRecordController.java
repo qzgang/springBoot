@@ -3,10 +3,8 @@ package com.hrb.sso.rz.controller;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
-import com.hrb.sso.entity.Teacher;
 import com.hrb.sso.rz.entity.RzBusRecord;
 import com.hrb.sso.rz.service.RzBusRecordService;
-import com.hrb.sso.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
