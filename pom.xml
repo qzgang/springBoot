@@ -70,7 +70,6 @@
             <systemPath>${project.basedir}/src/main/resources/lib/ojdbc6.jar</systemPath>
         </dependency>
 
-
         <!--MYSQL驱动-->
         <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
         <dependency>
@@ -80,7 +79,6 @@
         </dependency>
 
         <!--数据库连接池-->
-        <!-- https://mvnrepository.com/artifact/com.alibaba/druid -->
         <!-- https://mvnrepository.com/artifact/com.alibaba/druid-spring-boot-starter -->
         <dependency>
             <groupId>com.alibaba</groupId>
