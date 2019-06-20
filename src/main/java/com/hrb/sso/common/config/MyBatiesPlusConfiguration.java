@@ -26,7 +26,7 @@ import java.util.Map;
  * @author qzg
  */
 @Configuration
-@MapperScan("com.hrb.sso.mapper*")
+@MapperScan("com.hrb.sso.*.dao*")
 public class MyBatiesPlusConfiguration {
     /**
      * 数据源oracle
