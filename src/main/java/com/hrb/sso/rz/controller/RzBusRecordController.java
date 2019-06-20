@@ -5,11 +5,11 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.hrb.sso.rz.entity.RzBusRecord;
 import com.hrb.sso.rz.service.RzBusRecordService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -22,6 +22,7 @@ import java.util.List;
  * @author ${author}
  * @since 2019-06-20
  */
+@Api("对学生表CRUD")
 @RestController
 @RequestMapping("/rzBusRecord")
 public class RzBusRecordController {
