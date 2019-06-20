@@ -4,24 +4,30 @@ server:
   servlet:
     context-path: /sso
 spring:
-  datasource:
+  devtools:
+    restart:
+      enabled: true #设置开启热部署
+  freemarker:
+    cache: false    #页面不加载缓存，修改即时生效
+  datasource:       #多数据源配置
     druid:
       db1:
         username: hurbao001_zl
         password: hurbao001_zl
         driver-class-name: oracle.jdbc.OracleDriver
         url: jdbc:oracle:thin:@10.0.0.215:1521:hurbao
-        initialSize: 5
-        minIdle: 5
+        initialSize: 2
+        minIdle: 2
         maxActive: 20
       db2:
         username: root
         password: root
         driver-class-name: com.mysql.jdbc.Driver
         url: jdbc:mysql://10.0.0.53/dev_hurp2p_zl?useUnicode=true&characterEncoding=utf8
-        initialSize: 5
-        minIdle: 5
-        maxActive: 20
+        initialSize: 3
+        minIdle: 3
+        maxActive: 30
+    type: com.alibaba.druid.pool.DruidDataSource
   main:
     allow-bean-definition-overriding: true
 mybatis-plus:
