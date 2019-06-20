@@ -5,10 +5,11 @@ import java.util.Date;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;
-import lombok.Data;
-import lombok.ToString;
-
 import java.io.Serializable;
+
+
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * <p>
@@ -18,9 +19,9 @@ import java.io.Serializable;
  * @author ${author}
  * @since 2019-06-20
  */
-@TableName("rz_bus_record")
 @Data
-@ToString
+@Accessors(chain = true)
+@TableName("rz_bus_record")
 public class RzBusRecord implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -65,5 +66,6 @@ public class RzBusRecord implements Serializable {
      */
     @TableField("DMODIFY_DATE")
     private Date dmodifyDate;
+
 
 }
