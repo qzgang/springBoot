@@ -7,7 +7,10 @@ import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-
+/**
+ * @author qzg
+ * 配置：Druid的SQL监控
+ */
 @Configuration
 public class DruidConfiguration {
 
@@ -19,8 +22,8 @@ public class DruidConfiguration {
         // IP黑名单(共同存在时，deny优先于allow)
         servletRegistrationBean.addInitParameter("deny","127.0.0.1");
         //控制台管理用户
-        servletRegistrationBean.addInitParameter("loginUsername","admin");
-        servletRegistrationBean.addInitParameter("loginPassword","123456");
+        servletRegistrationBean.addInitParameter("loginUsername","root");
+        servletRegistrationBean.addInitParameter("loginPassword","root");
         //是否能够重置数据
         servletRegistrationBean.addInitParameter("resetEnable","false");
         return servletRegistrationBean;

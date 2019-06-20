@@ -22,40 +22,25 @@ import javax.sql.DataSource;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author qzg
+ */
 @Configuration
 @MapperScan("com.hrb.sso.mapper*")
 public class MyBatiesPlusConfiguration {
-
-    /*
-     * 分页插件，自动识别数据库类型
-     * 多租户，请参考官网【插件扩展】
-     */
-    @Bean
-    public PaginationInterceptor paginationInterceptor() {
-        PaginationInterceptor paginationInterceptor = new PaginationInterceptor();
-        // 开启 PageHelper 的支持
-        paginationInterceptor.setLocalPage(true);
-        return paginationInterceptor;
-    }
-
     /**
-     * SQL执行效率插件
+     * 数据源oracle
+     * @return
      */
-    @Bean
-    @Profile({"dev","test"})// 设置 dev test 环境开启
-    public PerformanceInterceptor performanceInterceptor() {
-        PerformanceInterceptor performanceInterceptor = new PerformanceInterceptor();
-        performanceInterceptor.setMaxTime(1000);
-        performanceInterceptor.setFormat(true);
-        return performanceInterceptor;
-    }
-
     @Bean(name = "db1")
     @ConfigurationProperties(prefix = "spring.datasource.druid.db1" )
     public DataSource db1() {
         return DruidDataSourceBuilder.create().build();
     }
-
+    /**
+     * 数据源mysql
+     * @return
+     */
     @Bean(name = "db2")
     @ConfigurationProperties(prefix = "spring.datasource.druid.db2" )
     public DataSource db2() {
@@ -70,7 +55,7 @@ public class MyBatiesPlusConfiguration {
     @Primary
     public DataSource multipleDataSource(@Qualifier("db1") DataSource db1, @Qualifier("db2") DataSource db2) {
         MultipleDataSource multipleDataSource = new MultipleDataSource();
-        Map< Object, Object > targetDataSources = new HashMap<>();
+        Map< Object,Object> targetDataSources = new HashMap<>(2);
         targetDataSources.put(DataSourceEnum.DB1.getValue(), db1);
         targetDataSources.put(DataSourceEnum.DB2.getValue(), db2);
         //添加数据源
@@ -80,22 +65,42 @@ public class MyBatiesPlusConfiguration {
         return multipleDataSource;
     }
 
+    /**
+     * 分页插件
+     */
+    @Bean
+    public PaginationInterceptor paginationInterceptor() {
+        PaginationInterceptor paginationInterceptor = new PaginationInterceptor();
+        // 开启 PageHelper 的支持
+        paginationInterceptor.setLocalPage(true);
+        return paginationInterceptor;
+    }
+
+    /**
+     * SQL执行效率插件(设置dev,test 环境开启)
+     */
+    @Bean
+    @Profile({"dev","test"})
+    public PerformanceInterceptor performanceInterceptor() {
+        PerformanceInterceptor performanceInterceptor = new PerformanceInterceptor();
+        performanceInterceptor.setMaxTime(1000);
+        performanceInterceptor.setFormat(true);
+        return performanceInterceptor;
+    }
+
     @Bean("sqlSessionFactory")
     public SqlSessionFactory sqlSessionFactory() throws Exception {
         MybatisSqlSessionFactoryBean sqlSessionFactory = new MybatisSqlSessionFactoryBean();
+        //设置数据源
         sqlSessionFactory.setDataSource(multipleDataSource(db1(),db2()));
-        //sqlSessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:/mapper/*/*Mapper.xml"));
-
+        //设置配置
         MybatisConfiguration configuration = new MybatisConfiguration();
-        //configuration.setDefaultScriptingLanguage(MybatisXMLLanguageDriver.class);
         configuration.setJdbcTypeForNull(JdbcType.NULL);
         configuration.setMapUnderscoreToCamelCase(true);
         configuration.setCacheEnabled(false);
         sqlSessionFactory.setConfiguration(configuration);
-        sqlSessionFactory.setPlugins(new Interceptor[]{ //PerformanceInterceptor(),OptimisticLockerInterceptor()
-                paginationInterceptor() //添加分页功能
-        });
-        //sqlSessionFactory.setGlobalConfig(globalConfiguration());
+        //设置插件
+        sqlSessionFactory.setPlugins(new Interceptor[]{paginationInterceptor(),performanceInterceptor() });
         return sqlSessionFactory.getObject();
     }
 
