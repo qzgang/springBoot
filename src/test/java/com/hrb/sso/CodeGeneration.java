@@ -61,6 +61,7 @@ public class CodeGeneration {
         strategy.setSuperServiceClass(null);
         strategy.setSuperServiceImplClass(null);
         strategy.setSuperMapperClass(null);
+        strategy.setEntityLombokModel(true);
         mpg.setStrategy(strategy);
 
         // 包配置
