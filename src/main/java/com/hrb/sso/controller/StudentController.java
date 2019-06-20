@@ -2,6 +2,7 @@ package com.hrb.sso.controller;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
+import com.baomidou.mybatisplus.plugins.Page;
 import com.hrb.sso.entity.Student;
 import com.hrb.sso.service.StudentService;
 import com.hrb.sso.vo.StudentVo;
@@ -46,8 +47,10 @@ public class StudentController {
     @ApiOperation(value = "查询学生")
     @GetMapping("/list")
     public List<Student> list(){
-        Wrapper<Student> wrapper = new EntityWrapper<>();
-        return studentService.selectList(wrapper);
+        Page<Student> page = new Page<>();
+        page.setSize(10);
+        page.setCurrent(0);
+        return studentService.selectPage(page).getRecords();
     }
 }
 
