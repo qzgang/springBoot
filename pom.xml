@@ -69,23 +69,20 @@
             <scope>system</scope>
             <systemPath>${project.basedir}/src/main/resources/lib/ojdbc6.jar</systemPath>
         </dependency>
-
-        <!--MYSQL驱动-->
+        <!--mysql驱动-->
         <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.15</version>
         </dependency>
-
-        <!--数据库连接池-->
+        <!--druid数据库连接池-->
         <!-- https://mvnrepository.com/artifact/com.alibaba/druid-spring-boot-starter -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
             <version>1.1.10</version>
         </dependency>
-
         <!--分页插件-->
         <!-- https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper -->
         <dependency>
@@ -93,16 +90,14 @@
             <artifactId>pagehelper</artifactId>
             <version>5.1.8</version>
         </dependency>
-
-        <!--MYBATIS-PLUS-->
+        <!--mybatis-plus-->
         <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-boot-starter -->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>2.1.9</version>
         </dependency>
-
-        <!--LOMBOK-->
+        <!--lombok-->
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -110,13 +105,11 @@
             <version>1.18.8</version>
             <scope>provided</scope>
         </dependency>
-
-        <!--AOP-->
+        <!--aop-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
-
         <!--swagger-->
         <dependency>
             <groupId>io.springfox</groupId>
@@ -127,6 +120,13 @@
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
             <version>${swagger.version}</version>
+        </dependency>
+        <!--自动生成工具 集成lombok，swagger-->
+        <!-- https://github.com/flying-cattle/mybatis-dsc-generator-->
+        <dependency>
+            <groupId>com.github.flying-cattle</groupId>
+            <artifactId>mybatis-dsc-generator</artifactId>
+            <version>3.0.1.RELEASE</version>
         </dependency>
     </dependencies>
 
@@ -153,6 +153,13 @@
             </properties>
         </profile>
     </profiles>
+    <!-- 代码库 -->
+    <repositories>
+        <repository>
+            <id>maven-ali</id>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+        </repository>
+    </repositories>
 
     <build>
         <plugins>
@@ -174,12 +181,4 @@
             </resource>
         </resources>
     </build>
-
-    <repositories><!-- 代码库 -->
-        <repository>
-            <id>maven-ali</id>
-            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
-        </repository>
-    </repositories>
-
 </project>
