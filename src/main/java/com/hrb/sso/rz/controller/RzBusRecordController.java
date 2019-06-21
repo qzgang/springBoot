@@ -3,6 +3,7 @@ package com.hrb.sso.rz.controller;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
+import com.hrb.sso.common.zookeeper.ZkConfig;
 import com.hrb.sso.rz.entity.RzBusRecord;
 import com.hrb.sso.rz.service.RzBusRecordService;
 import io.swagger.annotations.Api;
@@ -22,7 +23,6 @@ import java.util.List;
  * @author ${author}
  * @since 2019-06-20
  */
-@Api("对学生表CRUD")
 @RestController
 @RequestMapping("/rzBusRecord")
 public class RzBusRecordController {
@@ -30,10 +30,18 @@ public class RzBusRecordController {
     @Autowired
     private RzBusRecordService recordService;
 
+    @Autowired
+    ZkConfig zkConfig;
+
     @GetMapping("/list")
     public List<RzBusRecord> list(){
         Wrapper<RzBusRecord> wrapper = new EntityWrapper<>();
         return recordService.selectList(wrapper);
+    }
+
+    @GetMapping("/zk")
+    public ZkConfig zk(){
+        return zkConfig;
     }
 }
 
