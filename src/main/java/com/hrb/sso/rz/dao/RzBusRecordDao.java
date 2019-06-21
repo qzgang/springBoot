@@ -12,7 +12,6 @@ import org.apache.ibatis.annotations.Mapper;
  * @author ${author}
  * @since 2019-06-20
  */
-@Mapper
 public interface RzBusRecordDao extends BaseMapper<RzBusRecord> {
 
 }
