@@ -1,4 +1,4 @@
-debug: true
+debug: false
 server:
   port: 8888
   servlet:
@@ -14,23 +14,23 @@ spring:
   datasource:       #多数据源配置
     druid:
       oracle-db:
-        username: hurbao001_zl
-        password: hurbao001_zl
+        username: ${hrb-test.oracle_jdbc_username}
+        password: ${hrb-test.oracle_jdbc_password}
         driver-class-name: oracle.jdbc.OracleDriver
-        url: jdbc:oracle:thin:@10.0.0.215:1521:hurbao
+        url: ${hrb-test.oracle_jdbc_url}
         initialSize: 2
         minIdle: 2
         maxActive: 20
       mysql-db:
-        username: root
-        password: root
+        username: ${hrb-test.mysql_jdbc_username}
+        password: ${hrb-test.mysql_jdbc_password}
         driver-class-name: com.mysql.jdbc.Driver
-        url: jdbc:mysql://10.0.0.53/dev_hurp2p_zl?useUnicode=true&characterEncoding=utf8
+        url: ${hrb-test.mysql_jdbc_url}
         initialSize: 3
         minIdle: 3
         maxActive: 30
     type: com.alibaba.druid.pool.DruidDataSource
-  main: 
+  main:
     allow-bean-definition-overriding: true
 mybatis-plus:
   # 如果是放在src/main/java目录下 classpath:/com/hrb/sso/*/mapper/*Mapper.xml
