@@ -4,6 +4,8 @@ server:
   servlet:
     context-path: /sso
 spring:
+  profiles:
+     active: dev
   devtools:
     restart:
       enabled: true #设置开启热部署
@@ -28,7 +30,7 @@ spring:
         minIdle: 3
         maxActive: 30
     type: com.alibaba.druid.pool.DruidDataSource
-  main:
+  main: 
     allow-bean-definition-overriding: true
 mybatis-plus:
   # 如果是放在src/main/java目录下 classpath:/com/hrb/sso/*/mapper/*Mapper.xml
