@@ -26,23 +26,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-zookeeper</artifactId>
-            <version>2.1.1.RELEASE</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-zookeeper-config</artifactId>
-            <version>2.1.1.RELEASE</version>
         </dependency>
         <!-- 提供zookeeper整合的包 -->
         <dependency>
@@ -50,12 +37,6 @@
             <artifactId>spring-cloud-starter-zookeeper-config</artifactId>
             <version>2.1.1.RELEASE</version>
         </dependency>
-        <!-- springboot 提供监听的 -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-
         <!--oracle驱动-->
         <dependency>
             <groupId>com.oracle</groupId>
@@ -71,7 +52,6 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.15</version>
         </dependency>
-
         <!--druid数据库连接池-->
         <!-- https://mvnrepository.com/artifact/com.alibaba/druid-spring-boot-starter -->
         <dependency>
