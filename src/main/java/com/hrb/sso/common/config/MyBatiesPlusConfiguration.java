@@ -84,6 +84,7 @@ public class MyBatiesPlusConfiguration {
     public PerformanceInterceptor performanceInterceptor() {
         PerformanceInterceptor performanceInterceptor = new PerformanceInterceptor();
         performanceInterceptor.setMaxTime(1000);
+        //SQL是否格式化
         performanceInterceptor.setFormat(true);
         return performanceInterceptor;
     }
@@ -100,7 +101,7 @@ public class MyBatiesPlusConfiguration {
         configuration.setCacheEnabled(false);
         sqlSessionFactory.setConfiguration(configuration);
         //设置插件
-        sqlSessionFactory.setPlugins(new Interceptor[]{paginationInterceptor(),performanceInterceptor() });
+        sqlSessionFactory.setPlugins(new Interceptor[]{paginationInterceptor(),performanceInterceptor()});
         return sqlSessionFactory.getObject();
     }
 
