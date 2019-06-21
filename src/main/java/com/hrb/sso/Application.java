@@ -1,6 +1,6 @@
 package com.hrb.sso;
 
-import com.hrb.sso.common.zookeeper.ZkConfig;
+import com.hrb.sso.common.zookeeper.config.ZkConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;

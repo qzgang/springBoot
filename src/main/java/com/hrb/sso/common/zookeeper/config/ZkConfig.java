@@ -1,11 +1,11 @@
-package com.hrb.sso.common.zookeeper;
+package com.hrb.sso.common.zookeeper.config;
 
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @Data
-@ConfigurationProperties(prefix = "hrb-test")
+@ConfigurationProperties(prefix ="hrb-test")
 public class ZkConfig {
     public String oracle_jdbc_url;
     public String oracle_jdbc_username;

@@ -1,7 +1,7 @@
 package com.hrb.sso.rz.service.impl;
 
-import com.hrb.sso.common.annotation.DataSource;
-import com.hrb.sso.common.enums.DataSourceEnum;
+import com.hrb.sso.common.datasource.annotation.DataSource;
+import com.hrb.sso.common.datasource.enums.DataSourceEnum;
 import com.hrb.sso.rz.entity.RzBusRecord;
 import com.hrb.sso.rz.dao.RzBusRecordDao;
 import com.hrb.sso.rz.service.RzBusRecordService;
