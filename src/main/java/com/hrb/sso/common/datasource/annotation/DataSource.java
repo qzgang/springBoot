@@ -9,6 +9,10 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface DataSource {
+
+
+
+
    DataSourceEnum value() default DataSourceEnum.ORACLE_DB;
 }
 
