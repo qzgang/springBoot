@@ -5,7 +5,7 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @Data
-@ConfigurationProperties(prefix ="hrb-test")
+@ConfigurationProperties(prefix ="config")
 public class ZkConfig {
     public String oracle_jdbc_url;
     public String oracle_jdbc_username;
