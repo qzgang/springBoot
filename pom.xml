@@ -37,6 +37,11 @@
             <artifactId>spring-cloud-starter-zookeeper-config</artifactId>
             <version>2.1.1.RELEASE</version>
         </dependency>
+        <!-- springboot 提供监听的 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
         <!-- redis springboot整合 -->
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-redis -->
         <dependency>
