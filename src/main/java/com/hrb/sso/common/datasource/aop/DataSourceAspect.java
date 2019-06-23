@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Order(-1)
 public class DataSourceAspect {
-    @Pointcut("@within(com.hrb.sso.common.annotation.DataSource) || @annotation(com.hrb.sso.common.annotation.DataSource)")
+    @Pointcut("@within(com.hrb.sso.common.datasource.annotation.DataSource) || @annotation(com.hrb.sso.common.datasource.annotation.DataSource)")
     public void pointCut(){
 
     }
