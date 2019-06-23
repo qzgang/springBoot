@@ -1,39 +1,44 @@
-debug:
-  false
+debug: false
 server:
   port: 8888
-  servlet:
-    context-path: /sso
+  servlet.context-path: /sso
+
 spring:
-  profiles:
-    active: @profileActive@
-  devtools:
-    restart:
-      enabled: true #设置开启热部署
-  freemarker:
-    cache: false    #页面不加载缓存，修改即时生效
-  datasource:       #多数据源配置
-    druid:
-      oracle-db:
-        username: ${config.oracle_jdbc_username}
-        password: ${config.oracle_jdbc_password}
-        #        driver-class-name: oracle.jdbc.OracleDriver
-        driver-class-name: com.mysql.jdbc.Driver
-        url: ${config.oracle_jdbc_url}
-        initialSize: 2
-        minIdle: 2
-        maxActive: 20
-      mysql-db:
-        username: ${config.mysql_jdbc_username}
-        password: ${config.mysql_jdbc_password}
-        driver-class-name: com.mysql.jdbc.Driver
-        url: ${config.mysql_jdbc_url}
-        initialSize: 3
-        minIdle: 3
-        maxActive: 30
-    type: com.alibaba.druid.pool.DruidDataSource
-  main:
-    allow-bean-definition-overriding: true
+  profiles.active: @profileActive@
+  devtools.restart.enabled: true #设置开启热部署
+  freemarker.cache: false    #页面不加载缓存，修改即时生效
+  main.allow-bean-definition-overriding: true
+  datasource.type: com.alibaba.druid.pool.DruidDataSource #多数据源
+
+# redis配置
+redis:
+  cluster:
+    redis-server: 127.0.0.1:6379
+    connection-timeout: 2000
+    so-timeout: 3000
+    max-redirections: 5
+
+# 数据源配置
+datasource:
+  oracle-db:
+    url: ${config.oracle_jdbc_url}
+    username: ${config.oracle_jdbc_username}
+    password: ${config.oracle_jdbc_password}
+    # driver-class-name: oracle.jdbc.OracleDriver
+    driver-class-name: com.mysql.jdbc.Driver
+    initialSize: 2
+    minIdle: 2
+    maxActive: 20
+  mysql-db:
+    url: ${config.mysql_jdbc_url}
+    username: ${config.mysql_jdbc_username}
+    password: ${config.mysql_jdbc_password}
+    driver-class-name: com.mysql.jdbc.Driver
+    initialSize: 3
+    minIdle: 3
+    maxActive: 30
+
+# Mybatis-plus配置
 mybatis-plus:
   # 如果是放在src/main/java目录下 classpath:/com/hrb/sso/*/mapper/*Mapper.xml
   # 如果是放在resource目录 classpath:/mapper/*Mapper.xml
