@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.hrb.sso.common.zookeeper.config.ZkConfig;
 import com.hrb.sso.rz.entity.RzBusRecord;
 import com.hrb.sso.rz.service.RzBusRecordService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,10 +23,10 @@ import java.util.List;
  * @author ${author}
  * @since 2019-06-20
  */
+@Slf4j
 @RestController
 @RequestMapping("/rzBusRecord")
 public class RzBusRecordController {
-
     @Autowired
     private RzBusRecordService recordService;
 
@@ -34,12 +35,14 @@ public class RzBusRecordController {
 
     @GetMapping("/list")
     public List<RzBusRecord> list(){
+        log.info("=====");
         Wrapper<RzBusRecord> wrapper = new EntityWrapper<>();
         return recordService.selectList(wrapper);
     }
 
     @GetMapping("/zk")
     public ZkConfig zk(){
+        log.info("=====");
         return zkConfig;
     }
 }
