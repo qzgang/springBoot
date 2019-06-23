@@ -142,7 +142,6 @@
             <id>prod</id>
             <properties>
                 <profileActive>prod</profileActive>
-                <zkServer>127.0.0.1:2181</zkServer>
             </properties>
             <activation>
                 <activeByDefault>true</activeByDefault>
@@ -152,14 +151,12 @@
             <id>dev</id>
             <properties>
                 <profileActive>dev</profileActive>
-                <zkServer>127.0.0.1:2181</zkServer>
             </properties>
         </profile>
         <profile>
             <id>test</id>
             <properties>
                 <profileActive>test</profileActive>
-                <zkServer>127.0.0.1:2181</zkServer>
             </properties>
         </profile>
     </profiles>
