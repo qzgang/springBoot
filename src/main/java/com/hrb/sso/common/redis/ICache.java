@@ -1,6 +1,8 @@
 package com.hrb.sso.common.redis;
 
 import com.hrb.sso.common.redis.service.RedisCacheService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -12,6 +14,7 @@ import java.util.Map;
  */
 @Service("iCache")
 public final class ICache {
+    private static Logger logger = LoggerFactory.getLogger(ICache.class);
     // 超时时间，单位为秒
     private final int expiration = 3600;
     @Resource
@@ -32,7 +35,7 @@ public final class ICache {
             }
             return redisCacheService.putCache(cacheKey.toString(), objValue, expiration);
         } catch (Throwable ex) {
-            //logger.error("Cannot set the cache with the cacheKey:" + cacheKey.toString(), ex);
+            logger.error("Cannot set the cache with the cacheKey:" + cacheKey.toString(), ex);
         }
         return false;
     }
@@ -42,7 +45,7 @@ public final class ICache {
             redisCacheService.removeCache(cacheKey);
             return true;
         } catch (Throwable ex) {
-            //logger.error("Cannot remove the cache with the cacheKey:" + cacheKey.toString(), ex);
+            logger.error("Cannot remove the cache with the cacheKey:" + cacheKey.toString(), ex);
             return false;
         }
     }
@@ -59,7 +62,7 @@ public final class ICache {
         try {
             return redisCacheService.putListCache(cacheKey, objValue);
         } catch (Throwable ex) {
-            //logger.error("Cannot put the list cache with the cacheKey:" + cacheKey.toString(), ex);
+            logger.error("Cannot put the list cache with the cacheKey:" + cacheKey.toString(), ex);
             return false;
         }
     }
@@ -76,7 +79,7 @@ public final class ICache {
         try {
             return redisCacheService.putListCache(cacheKey, objValue, index);
         } catch (Throwable ex) {
-            //logger.error("Cannot put the list cache in the index with the cacheKey:" + cacheKey.toString(), ex);
+            logger.error("Cannot put the list cache in the index with the cacheKey:" + cacheKey.toString(), ex);
             return false;
         }
     }
@@ -91,7 +94,7 @@ public final class ICache {
         try {
             return redisCacheService.getListCache(cacheKey);
         } catch (Throwable ex) {
-            //logger.error("Cannot get the list cache with the cacheKey:" + cacheKey.toString(), ex);
+            logger.error("Cannot get the list cache with the cacheKey:" + cacheKey.toString(), ex);
             return null;
         }
     }
@@ -106,7 +109,7 @@ public final class ICache {
         try {
             return redisCacheService.getListCache(cacheKey, start, end);
         } catch (Throwable ex) {
-            //logger.error("Cannot get the list cache between start and end with the cacheKey:" + cacheKey.toString(), ex);
+            logger.error("Cannot get the list cache between start and end with the cacheKey:" + cacheKey.toString(), ex);
             return null;
         }
     }
@@ -123,7 +126,7 @@ public final class ICache {
         try {
             return redisCacheService.trimListCache(cacheKey, start, end);
         } catch (Throwable ex) {
-            //logger.error("Cannot get the list cache with the cacheKey:" + cacheKey.toString(), ex);
+            logger.error("Cannot get the list cache with the cacheKey:" + cacheKey.toString(), ex);
             return false;
         }
     }
@@ -139,7 +142,7 @@ public final class ICache {
         try {
             return redisCacheService.putMapCache(cacheKey, map);
         } catch (Throwable ex) {
-            //logger.error("Cannot put the map cache with the cacheKey:" + cacheKey.toString(), ex);
+            logger.error("Cannot put the map cache with the cacheKey:" + cacheKey.toString(), ex);
             return false;
         }
     }
@@ -155,7 +158,7 @@ public final class ICache {
         try {
             return redisCacheService.deleteMapCache(cacheKey, mapKey);
         } catch (Throwable ex) {
-            //logger.error("Cannot delete the map cache with the cacheKey:" + cacheKey.toString() + " and the mapKey:" + mapKey, ex);
+            logger.error("Cannot delete the map cache with the cacheKey:" + cacheKey.toString() + " and the mapKey:" + mapKey, ex);
             return false;
         }
     }
@@ -171,7 +174,7 @@ public final class ICache {
         try {
             return redisCacheService.deleteMapCache(cacheKey, mapKey);
         } catch (Throwable ex) {
-            //logger.error("Cannot get the map value cache with the cacheKey:" + cacheKey.toString() + " and the mapKey:" + mapKey, ex);
+            logger.error("Cannot get the map value cache with the cacheKey:" + cacheKey.toString() + " and the mapKey:" + mapKey, ex);
             return false;
         }
     }
