@@ -33,7 +33,7 @@ public class MyBatiesPlusConfiguration {
      * @return
      */
     @Bean(name = "oracleDb")
-    @ConfigurationProperties(prefix = "spring.datasource.druid.oracle-db" )
+    @ConfigurationProperties(prefix = "datasource.oracle-db" )
     public DataSource oracleDb() {
         return DruidDataSourceBuilder.create().build();
     }
@@ -42,7 +42,7 @@ public class MyBatiesPlusConfiguration {
      * @return
      */
     @Bean(name = "mysqlDb")
-    @ConfigurationProperties(prefix = "spring.datasource.druid.mysql-db" )
+    @ConfigurationProperties(prefix = "datasource.mysql-db" )
     public DataSource mysqlDb() {
         return DruidDataSourceBuilder.create().build();
     }
