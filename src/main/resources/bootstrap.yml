@@ -3,7 +3,7 @@ spring:
     zookeeper:
       connect-string: 127.0.0.1:2181
       config:
-        root: /zookeeper/hurbao
+        root: /zookeeper/hurbao/conf
         enabled: true
   application:
     name: hrb-sso
