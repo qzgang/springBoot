@@ -16,6 +16,7 @@ logging.config: classpath:logback.xml
 # redis配置
 redis:
   cluster:
+    # redis-server默认从zk上读取，zk取不到，才用此此值
     redis-server: 127.0.0.1:6379
     connection-timeout: 2000
     so-timeout: 3000
