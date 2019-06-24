@@ -3,6 +3,7 @@ package com.hrb.sso.rz.controller;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
+import com.hrb.sso.common.redis.ICached;
 import com.hrb.sso.common.zookeeper.config.ZkConfig;
 import com.hrb.sso.rz.entity.RzBusRecord;
 import com.hrb.sso.rz.service.RzBusRecordService;
@@ -32,6 +33,8 @@ public class RzBusRecordController {
 
     @Autowired
     ZkConfig zkConfig;
+    @Autowired
+    ICached iCached;
 
     @GetMapping("/list")
     public List<RzBusRecord> list(){
@@ -44,6 +47,12 @@ public class RzBusRecordController {
     public ZkConfig zk(){
         log.info("=====");
         return zkConfig;
+    }
+
+   @GetMapping("/icache")
+    public Object icache() throws Exception{
+        log.info("=====");
+        return iCached.get("SERCURITY_MONEY");
     }
 }
 
