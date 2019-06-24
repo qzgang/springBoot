@@ -27,8 +27,8 @@ datasource:
     url: ${config.oracle_jdbc_url}
     username: ${config.oracle_jdbc_username}
     password: ${config.oracle_jdbc_password}
-    # driver-class-name: oracle.jdbc.OracleDriver
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: oracle.jdbc.OracleDriver
+    # driver-class-name: com.mysql.jdbc.Driver
     initialSize: 2
     minIdle: 2
     maxActive: 20

@@ -4,7 +4,7 @@ spring:
 #      connect-string: 127.0.0.1:2181
       connect-string: 10.0.0.50:2184
       config:
-        root: /zookeeper/hurbao/conf
+        root: /hurbao/conf
         enabled: true
   application:
-    name: hrb-sso
+    name: hrb-test
