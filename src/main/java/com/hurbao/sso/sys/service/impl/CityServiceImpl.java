@@ -1,5 +1,6 @@
 package com.hurbao.sso.sys.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.hurbao.sso.sys.domain.CityInfoDomain;
 import com.hurbao.sso.sys.domain.CountryDomain;
 import com.hurbao.sso.sys.domain.ProvinceDomain;
@@ -7,7 +8,6 @@ import com.hurbao.sso.sys.entity.City;
 import com.hurbao.sso.sys.dao.CityDao;
 import com.hurbao.sso.sys.entity.Province;
 import com.hurbao.sso.sys.service.CityService;
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;

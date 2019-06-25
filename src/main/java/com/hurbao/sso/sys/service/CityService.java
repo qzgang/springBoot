@@ -1,8 +1,8 @@
 package com.hurbao.sso.sys.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.hurbao.sso.sys.domain.CityInfoDomain;
 import com.hurbao.sso.sys.entity.City;
-import com.baomidou.mybatisplus.service.IService;
 import com.hurbao.sso.sys.entity.Province;
 
 import java.util.Set;

@@ -1,8 +1,8 @@
 package com.hurbao.sso.sys.dao;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.hurbao.sso.sys.domain.CityInfoDomain;
 import com.hurbao.sso.sys.entity.City;
-import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 import java.util.List;
 
