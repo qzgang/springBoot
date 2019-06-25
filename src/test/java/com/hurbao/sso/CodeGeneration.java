@@ -1,4 +1,4 @@
-package com.hrb.sso;
+package com.hurbao.sso;
 
 import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.config.DataSourceConfig;
@@ -8,7 +8,6 @@ import com.baomidou.mybatisplus.generator.config.StrategyConfig;
 import com.baomidou.mybatisplus.generator.config.rules.DbType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 
-import java.io.File;
 import java.net.URLDecoder;
 
 /**
@@ -25,7 +24,7 @@ public class CodeGeneration {
 
         String targetPath = Class.class.getClass().getResource("/").getPath();
         String currrntPath = URLDecoder.decode(targetPath.substring(0, targetPath.length() - 20), "utf-8");
-        System.out.println(currrntPath);///E:/springBoot-workspace/hrb-sso/
+        System.out.println(currrntPath);///E:/springBoot-workspace/hurbao-sso/
         AutoGenerator mpg = new AutoGenerator();
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
@@ -68,7 +67,7 @@ public class CodeGeneration {
         String[] tables = strategy.getInclude();
         String str = tables[0].toLowerCase().split("_")[0];
         PackageConfig pc = new PackageConfig();
-        pc.setParent("com.hrb.sso"+"."+str);
+        pc.setParent("com.hurbao.sso"+"."+str);
         pc.setController("controller");
         pc.setService("service");
         pc.setServiceImpl("service.impl");

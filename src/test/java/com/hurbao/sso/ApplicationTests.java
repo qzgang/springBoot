@@ -1,4 +1,4 @@
-package com.hrb.sso;
+package com.hurbao.sso;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
