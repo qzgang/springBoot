@@ -42,15 +42,15 @@
         <appender-ref ref="FILE"/>
     </root>
     <!--用来设置某一个包或者具体的某一个类的日志打印级别-->
-    <logger name="com.hrb.sso" level="DEBUG" additivity="false">
+    <logger name="com.hurbao.sso" level="DEBUG" additivity="false">
         <appender-ref ref="STDOUT" />
     </logger>
     <!-- 测试环境+开发环境. -->
     <springProfile name="test,dev">
-        <logger name="com.hrb.sso" level="DEBUG" additivity="false"/>
+        <logger name="com.hurbao.sso" level="DEBUG" additivity="false"/>
     </springProfile>
     <!-- 生产环境 -->
     <springProfile name="prod">
-        <logger name="com.hrb.sso" level="INFO" additivity="false"/>
+        <logger name="com.hurbao.sso" level="INFO" additivity="false"/>
     </springProfile>
 </configuration>
