@@ -4,6 +4,9 @@ package com.hrb.sso.common.zookeeper.config;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
+/**
+ * 读取zk上配置信息，自动刷新
+ */
 @Component
 @ConfigurationProperties(prefix ="config")
 public class ZkConfig {
