@@ -1,10 +1,16 @@
 package com.hurbao.sso;
 
+
+
+import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
-import com.baomidou.mybatisplus.generator.config.*;
+import com.baomidou.mybatisplus.generator.config.DataSourceConfig;
+import com.baomidou.mybatisplus.generator.config.GlobalConfig;
+import com.baomidou.mybatisplus.generator.config.PackageConfig;
+import com.baomidou.mybatisplus.generator.config.StrategyConfig;
 import com.baomidou.mybatisplus.generator.config.converts.OracleTypeConvert;
 import com.baomidou.mybatisplus.generator.config.rules.DbColumnType;
-import com.baomidou.mybatisplus.generator.config.rules.DbType;
+import com.baomidou.mybatisplus.generator.config.rules.IColumnType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 
 import java.net.URLDecoder;
@@ -33,6 +39,7 @@ public class CodeGeneration {
         gc.setEnableCache(false);// XML 二级缓存
         gc.setBaseResultMap(true);// XML ResultMap
         gc.setBaseColumnList(false);// XML columList
+        //gc.setSwagger2(true);
 
         // 自定义文件命名，注意 %s 会自动填充表实体属性！
         gc.setControllerName("%sController");
@@ -52,42 +59,47 @@ public class CodeGeneration {
         dsc.setUrl("jdbc:oracle:thin:@10.0.0.215:1521:hurbao");
         dsc.setTypeConvert(new OracleTypeConvert(){
             @Override
-            public DbColumnType processTypeConvert(String fieldType) {
-                String t = fieldType.toUpperCase();
-                if (t.contains("CHAR")) {
+            public IColumnType processTypeConvert(GlobalConfig globalConfig, String fieldType) {
+                String t = fieldType.toLowerCase();
+                if (t.contains("char")) {
                     return DbColumnType.STRING;
-                } else if (!t.contains("DATE") && !t.contains("TIMESTAMP")) {
-                    if (t.contains("NUMBER")) {
-                        if(t.matches("NUMBER")){
-                            return DbColumnType.INTEGER;
-                        }if (t.matches("NUMBER\\(+\\d\\)")) {
-                            return DbColumnType.INTEGER;
-                        } else {
-                            return t.matches("NUMBER\\(+\\d{2}+\\)") ? DbColumnType.LONG : DbColumnType.DOUBLE;
-                        }
-                    } else if (t.contains("FLOAT")) {
-                        return DbColumnType.FLOAT;
-                    } else if (t.contains("clob")) {
-                        return DbColumnType.CLOB;
-                    } else if (t.contains("BLOB")) {
-                        return DbColumnType.OBJECT;
-                    } else if (t.contains("binary")) {
-                        return DbColumnType.BYTE_ARRAY;
-                    } else {
-                        return t.contains("RAW") ? DbColumnType.BYTE_ARRAY : DbColumnType.STRING;
+                } else if (t.contains("date") || t.contains("timestamp")) {
+                    switch (globalConfig.getDateType()) {
+                        case ONLY_DATE:
+                            return DbColumnType.DATE;
+                        case SQL_PACK:
+                            return DbColumnType.TIMESTAMP;
+                        case TIME_PACK:
+                            return DbColumnType.LOCAL_DATE_TIME;
                     }
-                } else {
-                    return DbColumnType.DATE;
+                } else if (t.contains("number")) {
+                    if (t.matches("number") || t.matches("number\\(+\\d\\)")) {
+                        return DbColumnType.INTEGER;
+                    } else if (t.matches("number\\(+\\d{2}+\\)")) {
+                        return DbColumnType.LONG;
+                    }
+                    return DbColumnType.DOUBLE;
+                } else if (t.contains("float")) {
+                    return DbColumnType.FLOAT;
+                } else if (t.contains("clob")) {
+                    return DbColumnType.CLOB;
+                } else if (t.contains("blob")) {
+                    return DbColumnType.BLOB;
+                } else if (t.contains("binary")) {
+                    return DbColumnType.BYTE_ARRAY;
+                } else if (t.contains("raw")) {
+                    return DbColumnType.BYTE_ARRAY;
                 }
+                return DbColumnType.STRING;
             }
         });
         mpg.setDataSource(dsc);
 
         // 策略配置
         StrategyConfig strategy = new StrategyConfig();
-        strategy.setTablePrefix(new String[] { "sys_" });// 此处可以修改为您的表前缀
+        strategy.setTablePrefix(new String[] { "hy_" });// 此处可以修改为您的表前缀
         strategy.setNaming(NamingStrategy.underline_to_camel);// 表名生成策略
-        strategy.setInclude(new String[] { "SYS_CITY" }); // 需要生成的表
+        strategy.setInclude(new String[] { "HY_MEMBER_INFO" }); // 需要生成的表
         strategy.setSuperServiceClass(null);
         strategy.setSuperServiceImplClass(null);
         strategy.setSuperMapperClass(null);
