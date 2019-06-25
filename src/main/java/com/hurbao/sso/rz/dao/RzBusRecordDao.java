@@ -1,7 +1,7 @@
 package com.hurbao.sso.rz.dao;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.hurbao.sso.rz.entity.RzBusRecord;
-import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 /**
  * <p>
