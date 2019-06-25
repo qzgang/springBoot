@@ -1,8 +1,8 @@
 package com.hurbao.sso.rz.controller;
 
 
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
-import com.baomidou.mybatisplus.mapper.Wrapper;
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.hurbao.sso.common.redis.ICached;
 import com.hurbao.sso.common.zookeeper.config.ZkConfig;
 import com.hurbao.sso.rz.entity.RzBusRecord;
@@ -39,8 +39,8 @@ public class RzBusRecordController {
     @GetMapping("/list")
     public List<RzBusRecord> list(){
         log.info("=====");
-        Wrapper<RzBusRecord> wrapper = new EntityWrapper<>();
-        return recordService.selectList(wrapper);
+        Wrapper<RzBusRecord> wrapper = new QueryWrapper<>();
+        return recordService.list();
     }
 
     @GetMapping("/zk")
