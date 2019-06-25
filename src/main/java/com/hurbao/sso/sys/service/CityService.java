@@ -1,6 +1,6 @@
 package com.hurbao.sso.sys.service;
 
-import com.hurbao.sso.sys.entity.SysCity;
+import com.hurbao.sso.sys.entity.City;
 import com.baomidou.mybatisplus.service.IService;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.service.IService;
  * @author ${author}
  * @since 2019-06-25
  */
-public interface SysCityService extends IService<SysCity> {
+public interface CityService extends IService<City> {
 
 }

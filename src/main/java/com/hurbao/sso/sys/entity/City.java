@@ -22,7 +22,7 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 @TableName("SYS_CITY")
-public class SysCity implements Serializable {
+public class City implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

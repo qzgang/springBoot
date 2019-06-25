@@ -14,8 +14,8 @@ import org.springframework.stereotype.Controller;
  * @since 2019-06-25
  */
 @Controller
-@RequestMapping("/sysCity")
-public class SysCityController {
+@RequestMapping("/city")
+public class CityController {
 
 }
 

@@ -1,8 +1,8 @@
 package com.hurbao.sso.sys.service.impl;
 
-import com.hurbao.sso.sys.entity.SysCity;
-import com.hurbao.sso.sys.dao.SysCityDao;
-import com.hurbao.sso.sys.service.SysCityService;
+import com.hurbao.sso.sys.entity.City;
+import com.hurbao.sso.sys.dao.CityDao;
+import com.hurbao.sso.sys.service.CityService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +15,6 @@ import org.springframework.stereotype.Service;
  * @since 2019-06-25
  */
 @Service
-public class SysCityServiceImpl extends ServiceImpl<SysCityDao, SysCity> implements SysCityService {
+public class CityServiceImpl extends ServiceImpl<CityDao, City> implements CityService {
 
 }
