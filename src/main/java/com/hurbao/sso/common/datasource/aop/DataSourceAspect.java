@@ -18,10 +18,9 @@ import java.lang.reflect.Method;
 @Component
 @Slf4j
 @Aspect
-@Order(-1)
 public class DataSourceAspect {
 
-    @Pointcut("execution(* com.hurbao..*.*ServiceImpl.*(..)) || execution(* com.baomidou.mybatisplus.service.impl.ServiceImpl.*(..))")
+    @Pointcut("execution(* com.hurbao..*.*ServiceImpl.*(..)) || execution(* com.hurbao..*.service.*Service.*(..))")
     public void pointCut(){
     }
 
