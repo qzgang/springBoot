@@ -79,10 +79,17 @@
         </dependency>
         <!--mybatis-plus-->
         <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-boot-starter -->
+        <!--mybatis-plus的springboot支持-->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>2.1.9</version>
+            <version>3.1.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-generator -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-generator</artifactId>
+            <version>3.1.1</version>
         </dependency>
         <!--分页插件-->
         <!-- https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper -->
@@ -115,13 +122,6 @@
             <artifactId>springfox-swagger-ui</artifactId>
             <version>${swagger.version}</version>
         </dependency>
-        <!--自动生成工具 集成lombok，swagger-->
-        <!-- https://github.com/flying-cattle/mybatis-dsc-generator-->
-        <dependency>
-            <groupId>com.github.flying-cattle</groupId>
-            <artifactId>mybatis-dsc-generator</artifactId>
-            <version>3.0.1.RELEASE</version>
-        </dependency>
         <!--热部署-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -138,6 +138,12 @@
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
             <version>2.9.3</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.velocity/velocity -->
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity</artifactId>
+            <version>1.7</version>
         </dependency>
     </dependencies>
     <!-- 代码库 -->
