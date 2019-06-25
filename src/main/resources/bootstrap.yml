@@ -9,6 +9,7 @@ spring:
 #      connect-string: 127.0.0.1:2181
       connect-string: 10.0.0.50:2184
       config:
+        failFast: false
         root: /hurbao
         defaultContext: conf
         enabled: true
