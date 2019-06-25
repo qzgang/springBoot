@@ -60,12 +60,12 @@ public class City implements Serializable {
      * 是否省会
      */
     @TableField("BISPROVINCECITY")
-    private Double bisprovincecity;
+    private Integer bisprovincecity;
     /**
      * 是否常用
      */
     @TableField("BISCOMMON")
-    private Double biscommon;
+    private Integer biscommon;
     /**
      * 区号
      */

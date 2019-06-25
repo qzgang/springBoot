@@ -16,4 +16,52 @@
         <result column="SIDCODE" property="sidcode" />
     </resultMap>
 
+    <resultMap id="AllCityInfoDomian" type="com.hurbao.sso.sys.domain.CityInfoDomain">
+        <result column="s_name" property="sname" jdbcType="VARCHAR" />
+        <result column="s_jp" property="sjp" jdbcType="VARCHAR" />
+        <result column="s_pn" property="spn" jdbcType="VARCHAR" />
+        <result column="p_name" property="pname" jdbcType="VARCHAR" />
+        <result column="p_sort" property="psort" jdbcType="NUMERIC" />
+        <result column="p_jp" property="pjp" jdbcType="VARCHAR" />
+        <result column="p_pn" property="ppn" jdbcType="VARCHAR" />
+        <result column="c_name" property="cname" jdbcType="VARCHAR" />
+        <result column="c_sort" property="csort" jdbcType="NUMERIC" />
+        <result column="c_jp" property="cjp" jdbcType="VARCHAR" />
+        <result column="c_pn" property="cpn" jdbcType="VARCHAR" />
+        <result column="c_ispc" property="cispc" jdbcType="VARCHAR" />
+        <result column="c_acode" property="cacode" jdbcType="VARCHAR" />
+        <result column="proviceId" property="proviceId" jdbcType="VARCHAR" />
+        <result column="cityId" property="cityId" jdbcType="VARCHAR" />
+        <result column="p_SIDCODE" property="pidcode" jdbcType="VARCHAR" />
+        <result column="c_SIDCODE" property="cidcode" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <select id="selectAllCityInfo" resultMap="AllCityInfoDomian" >
+        <![CDATA[
+	     select a.sName     as s_name,
+         a.sJpName   as s_jp,
+         a.sPyName   as s_pn,
+         b.sName     as p_name,
+         b.iSort     as p_sort,
+         b.sJpName   as p_jp,
+         b.sPyName   as p_pn,
+         c.sName     as c_name,
+         c.iSort     as c_sort,
+         c.sJpName   as c_jp,
+         c.sPyName   as c_pn,
+         c.bIsProvinceCity as c_ispc,
+         c.sAreaCode as c_acode,
+         b.id    as proviceId,
+         c.id    as cityId,
+         b.sidcode     as p_SIDCODE,
+         c.sidcode   as c_SIDCODE
+	    from sys_Country a
+	    left join sys_Province b
+	      on a.id = b.sCountryID
+	    left join sys_City c
+	    on c.sProvinceID = b.id
+	    order by b.sjpname
+
+        ]]>
+    </select>
 </mapper>
