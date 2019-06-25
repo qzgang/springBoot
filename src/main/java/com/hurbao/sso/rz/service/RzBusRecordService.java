@@ -1,7 +1,7 @@
 package com.hurbao.sso.rz.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.hurbao.sso.rz.entity.RzBusRecord;
-import com.baomidou.mybatisplus.service.IService;
 
 /**
  * <p>

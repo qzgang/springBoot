@@ -1,11 +1,11 @@
 package com.hurbao.sso.rz.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.hurbao.sso.common.datasource.annotation.DataSource;
 import com.hurbao.sso.common.datasource.enums.DataSourceEnum;
 import com.hurbao.sso.rz.entity.RzBusRecord;
 import com.hurbao.sso.rz.dao.RzBusRecordDao;
 import com.hurbao.sso.rz.service.RzBusRecordService;
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 /**
