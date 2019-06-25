@@ -8,10 +8,11 @@
         <version>2.1.5.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.hrb.sso</groupId>
+    <groupId>com.hurbao.sso</groupId>
     <artifactId>hrb-sso</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>hrb-sso</name>
+    <url>https://www.hurbao.com</url>
     <packaging>jar</packaging>
 
     <properties>
@@ -38,10 +39,10 @@
             <version>2.1.1.RELEASE</version>
         </dependency>
         <!-- springboot 提供监听的 -->
-        <dependency>
+        <!--<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
+        </dependency>-->
         <!-- redis springboot整合 -->
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-redis -->
         <dependency>
