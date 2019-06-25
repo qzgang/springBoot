@@ -1,10 +1,9 @@
 package com.hurbao.sso;
 
 import com.baomidou.mybatisplus.generator.AutoGenerator;
-import com.baomidou.mybatisplus.generator.config.DataSourceConfig;
-import com.baomidou.mybatisplus.generator.config.GlobalConfig;
-import com.baomidou.mybatisplus.generator.config.PackageConfig;
-import com.baomidou.mybatisplus.generator.config.StrategyConfig;
+import com.baomidou.mybatisplus.generator.config.*;
+import com.baomidou.mybatisplus.generator.config.converts.OracleTypeConvert;
+import com.baomidou.mybatisplus.generator.config.rules.DbColumnType;
 import com.baomidou.mybatisplus.generator.config.rules.DbType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 
@@ -45,22 +44,55 @@ public class CodeGeneration {
 
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setDbType(DbType.MYSQL);
-        dsc.setDriverName("com.mysql.jdbc.Driver");
-        dsc.setUsername("root");
-        dsc.setPassword("root");
-        dsc.setUrl("jdbc:mysql://10.0.0.53/dev_hurp2p_zl?useUnicode=true&characterEncoding=utf8");
+        dsc.setDbType(DbType.ORACLE);
+        dsc.setDriverName("oracle.jdbc.OracleDriver");
+        dsc.setUsername("hurbao001_zl");
+        dsc.setPassword("hurbao001_zl");
+//        dsc.setUrl("jdbc:mysql://10.0.0.53/dev_hurp2p_zl?useUnicode=true&characterEncoding=utf8");
+        dsc.setUrl("jdbc:oracle:thin:@10.0.0.215:1521:hurbao");
+        dsc.setTypeConvert(new OracleTypeConvert(){
+            @Override
+            public DbColumnType processTypeConvert(String fieldType) {
+                String t = fieldType.toUpperCase();
+                if (t.contains("CHAR")) {
+                    return DbColumnType.STRING;
+                } else if (!t.contains("DATE") && !t.contains("TIMESTAMP")) {
+                    if (t.contains("NUMBER")) {
+                        if(t.matches("NUMBER")){
+                            return DbColumnType.INTEGER;
+                        }if (t.matches("NUMBER\\(+\\d\\)")) {
+                            return DbColumnType.INTEGER;
+                        } else {
+                            return t.matches("NUMBER\\(+\\d{2}+\\)") ? DbColumnType.LONG : DbColumnType.DOUBLE;
+                        }
+                    } else if (t.contains("FLOAT")) {
+                        return DbColumnType.FLOAT;
+                    } else if (t.contains("clob")) {
+                        return DbColumnType.CLOB;
+                    } else if (t.contains("BLOB")) {
+                        return DbColumnType.OBJECT;
+                    } else if (t.contains("binary")) {
+                        return DbColumnType.BYTE_ARRAY;
+                    } else {
+                        return t.contains("RAW") ? DbColumnType.BYTE_ARRAY : DbColumnType.STRING;
+                    }
+                } else {
+                    return DbColumnType.DATE;
+                }
+            }
+        });
         mpg.setDataSource(dsc);
 
         // 策略配置
         StrategyConfig strategy = new StrategyConfig();
-        // strategy.setTablePrefix(new String[] { "sys_" });// 此处可以修改为您的表前缀
+        strategy.setTablePrefix(new String[] { "sys_" });// 此处可以修改为您的表前缀
         strategy.setNaming(NamingStrategy.underline_to_camel);// 表名生成策略
-        strategy.setInclude(new String[] { "rz_bus_record" }); // 需要生成的表
+        strategy.setInclude(new String[] { "SYS_CITY" }); // 需要生成的表
         strategy.setSuperServiceClass(null);
         strategy.setSuperServiceImplClass(null);
         strategy.setSuperMapperClass(null);
         strategy.setEntityLombokModel(true);
+        strategy.setEntityBooleanColumnRemoveIsPrefix(true);
         mpg.setStrategy(strategy);
 
         // 包配置
