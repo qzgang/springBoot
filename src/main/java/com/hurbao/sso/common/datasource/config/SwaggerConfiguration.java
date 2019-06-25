@@ -23,7 +23,7 @@ public class SwaggerConfiguration {
     public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.hurbao.sso.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.hurbao.sso"))
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(apiInfo());
