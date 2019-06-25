@@ -1,8 +1,3 @@
-debug: false
-server:
-  port: 8888
-  servlet.context-path: /sso
-
 spring:
   profiles.active: @profileActive@
   devtools.restart.enabled: true #设置开启热部署
@@ -46,7 +41,7 @@ datasource:
 mybatis-plus:
   # 如果是放在src/main/java目录下 classpath:/com/hurbao/sso/*/mapper/*Mapper.xml
   # 如果是放在resource目录 classpath:/mapper/*Mapper.xml
-  mapper-locations: classpath:/com/hurbao/sso/*/dao/*Dao.xml
+  mapper-locations: classpath:/com/hurbao/*/*/dao/*Dao.xml
   # 实体扫描，多个package用逗号或者分号分隔
   typeAliasesPackage: com.hurbao.sso.entity
   global-config:

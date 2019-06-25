@@ -1,10 +1,17 @@
+debug: false
+server:
+  port: 8888
+  servlet.context-path: /sso
+
 spring:
   cloud:
     zookeeper:
 #      connect-string: 127.0.0.1:2181
       connect-string: 10.0.0.50:2184
       config:
-        root: /hurbao/conf
+        root: /hurbao
+        defaultContext: conf
         enabled: true
+        profileSeparator: ','
   application:
-    name: hrb-test
+    name: /conf/hrb-test
