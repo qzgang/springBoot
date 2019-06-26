@@ -1,8 +1,8 @@
 package com.hurbao.sso.rz.controller;
 
 
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hurbao.sso.common.redis.ICached;
 import com.hurbao.sso.common.zookeeper.config.ZkConfig;
 import com.hurbao.sso.rz.entity.RzBusRecord;
@@ -38,9 +38,17 @@ public class RzBusRecordController {
 
     @GetMapping("/list")
     public List<RzBusRecord> list(){
-        log.info("=====");
-        Wrapper<RzBusRecord> wrapper = new QueryWrapper<>();
-        return recordService.list();
+        QueryWrapper wrapper = new QueryWrapper();
+        RzBusRecord entity = new RzBusRecord();
+        entity.setId("1");
+        wrapper.setEntity(entity);
+        return recordService.list(wrapper);
+    }
+
+    @GetMapping("/page")
+    public List<RzBusRecord> page(){
+        Page page = new Page(1,2);
+        return recordService.page(page).getRecords();
     }
 
     @GetMapping("/zk")
