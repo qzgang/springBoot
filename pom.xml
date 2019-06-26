@@ -91,13 +91,6 @@
             <artifactId>mybatis-plus-generator</artifactId>
             <version>3.1.1</version>
         </dependency>
-        <!--分页插件-->
-        <!-- https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper -->
-        <dependency>
-            <groupId>com.github.pagehelper</groupId>
-            <artifactId>pagehelper</artifactId>
-            <version>5.1.8</version>
-        </dependency>
         <!--lombok-->
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
         <dependency>
@@ -158,6 +151,7 @@
             <id>dev</id>
             <properties>
                 <profileActive>dev</profileActive>
+                <zkServer>10.0.0.50:2184</zkServer>
             </properties>
             <activation>
                 <activeByDefault>true</activeByDefault>
@@ -167,12 +161,14 @@
             <id>test</id>
             <properties>
                 <profileActive>test</profileActive>
+                <zkServer>10.0.0.50:2187</zkServer>
             </properties>
         </profile>
         <profile>
             <id>prod</id>
             <properties>
                 <profileActive>prod</profileActive>
+                <zkServer>10.0.0.50:2188</zkServer>
             </properties>
         </profile>
     </profiles>
@@ -187,6 +183,7 @@
             <resource>
                 <directory>src/main/resources</directory>
                 <excludes>
+                    <exclude>bootstrap.yml</exclude>
                     <exclude>application*.yml</exclude>
                 </excludes>
             </resource>
@@ -195,6 +192,7 @@
                 <!-- 是否替换@xx@表示的maven properties属性值 -->
                 <filtering>true</filtering>
                 <includes>
+                    <include>bootstrap.yml</include>
                     <include>application.yml</include>
                     <include>application-${profileActive}.yml</include>
                 </includes>
