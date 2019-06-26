@@ -23,20 +23,33 @@ datasource:
     url: ${config.oracle_jdbc_url}
     username: ${config.oracle_jdbc_username}
     password: ${config.oracle_jdbc_password}
-    driver-class-name: oracle.jdbc.OracleDriver
+    driver-class-name: com.p6spy.engine.spy.P6SpyDriver
+#    driver-class-name: oracle.jdbc.OracleDriver
     # driver-class-name: com.mysql.jdbc.Driver
     initialSize: 2
     minIdle: 2
     maxActive: 20
+    # 指明连接是否被空闲连接回收器(如果有)进行检验.如果检测失败,则连接将被从池中去除.
+    testWhileIdle: true
+    # 借出连接时不要测试，否则很影响性能
+    testOnBorrow: false
+    # 验证连接是否可用，使用的SQL语句
+    validationQuery: 'select 1 from dual'
   mysql-db:
     url: ${config.mysql_jdbc_url}
     username: ${config.mysql_jdbc_username}
     password: ${config.mysql_jdbc_password}
-    driver-class-name: com.mysql.jdbc.Driver
+#    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.p6spy.engine.spy.P6SpyDriver
     initialSize: 3
     minIdle: 3
     maxActive: 30
-
+    # 指明连接是否被空闲连接回收器(如果有)进行检验.如果检测失败,则连接将被从池中去除.
+    testWhileIdle: true
+    # 借出连接时不要测试，否则很影响性能
+    testOnBorrow: false
+    # 验证连接是否可用，使用的SQL语句
+    validationQuery: 'select 1'
 # Mybatis-plus配置
 mybatis-plus:
   # 如果是放在src/main/java目录下 classpath:/com/hurbao/sso/*/mapper/*Mapper.xml
