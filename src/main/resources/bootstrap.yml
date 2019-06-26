@@ -12,6 +12,8 @@ spring:
         root: /hurbao
         defaultContext: conf
         enabled: true
+        # 默认值是true, 监控配置变更后是否自动更新，需配合Spring Boot Actuators 使用
+        watcher.enabled: true
         profileSeparator: ','
   application:
     name: /conf/hrb-test
