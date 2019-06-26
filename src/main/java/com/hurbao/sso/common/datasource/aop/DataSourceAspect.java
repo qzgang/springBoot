@@ -20,7 +20,8 @@ import java.lang.reflect.Method;
 @Aspect
 public class DataSourceAspect {
 
-    @Pointcut("execution(* com.hurbao..*.*ServiceImpl.*(..)) || execution(* com.hurbao..*.service.*Service.*(..))")
+    @Pointcut("execution(* com.hurbao..*.*ServiceImpl.*(..)) || execution(* com.hurbao..*.service.*Service.*(..)) " +
+            "|| execution(* com.baomidou.mybatisplus.extension.service.IService.*(..)) || execution(* com.baomidou.mybatisplus.extension.service.impl.ServiceImpl.*(..))")
     public void pointCut(){
     }
 
@@ -35,13 +36,13 @@ public class DataSourceAspect {
                 Object target=pjp.getTarget();
                 annotation = target.getClass().getAnnotation(DataSource.class);
             }
-            if(log.isDebugEnabled()){
-                log.debug("get annotation for  "+pjp.getTarget().getClass()+"  ");
-            }
             if(null ==annotation){
                 DataSourceContextHolder.setDataSource(DataSourceEnum.ORACLE_DB.getValue());
             }else{
                 DataSourceContextHolder.setDataSource(annotation.value().getValue());
+            }
+            if(log.isDebugEnabled()){
+                log.debug("====数据库类型："+DataSourceContextHolder.getDataSource());
             }
             retVal = pjp.proceed();
         } catch (Throwable e) {
