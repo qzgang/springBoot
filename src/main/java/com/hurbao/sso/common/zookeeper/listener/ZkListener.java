@@ -1,4 +1,4 @@
-package com.hurbao.sso.common.listener;
+package com.hurbao.sso.common.zookeeper.listener;
 
 import org.springframework.cloud.context.environment.EnvironmentChangeEvent;
 import org.springframework.cloud.endpoint.event.RefreshEvent;
@@ -6,7 +6,7 @@ import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
 /**
- * zookper节点监听
+ * zookeeper节点监听
  * 参数任意(为Object）的时候所有事件都会监听到
  * 所有，该参数事件，或者其子事件（子类）都可以接收到
  */
