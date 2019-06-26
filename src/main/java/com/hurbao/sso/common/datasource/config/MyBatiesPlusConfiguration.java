@@ -74,17 +74,17 @@ public class MyBatiesPlusConfiguration {
     }
 
     /**
-     * SQL执行效率插件(设置dev,test 环境开启)
+     * SQL执行效率插件(设置dev,test 环境开启) 不支持p6spy
      */
-    @Bean
+    /*@Bean
     @Profile({"dev","test"})
     public PerformanceInterceptor performanceInterceptor() {
         PerformanceInterceptor performanceInterceptor = new PerformanceInterceptor();
-        performanceInterceptor.setMaxTime(1000);
+        performanceInterceptor.setMaxTime(10000);
         //SQL是否格式化
         performanceInterceptor.setFormat(true);
         return performanceInterceptor;
-    }
+    }*/
 
     @Bean("sqlSessionFactory")
     public SqlSessionFactory sqlSessionFactory() throws Exception {
@@ -98,7 +98,7 @@ public class MyBatiesPlusConfiguration {
         configuration.setCacheEnabled(false);
         sqlSessionFactory.setConfiguration(configuration);
         //设置插件
-        sqlSessionFactory.setPlugins(new Interceptor[]{paginationInterceptor(),performanceInterceptor()});
+        sqlSessionFactory.setPlugins(new Interceptor[]{paginationInterceptor()/*,performanceInterceptor()*/});
         return sqlSessionFactory.getObject();
     }
 
