@@ -20,8 +20,10 @@ import java.lang.reflect.Method;
 @Aspect
 public class DataSourceAspect {
 
-    @Pointcut("execution(* com.hurbao..*.*ServiceImpl.*(..)) || execution(* com.hurbao..*.service.*Service.*(..)) " +
-            "|| execution(* com.baomidou.mybatisplus.extension.service.IService.*(..)) || execution(* com.baomidou.mybatisplus.extension.service.impl.ServiceImpl.*(..))")
+    @Pointcut("execution(* com.hurbao..*.*ServiceImpl.*(..)) " +
+            "|| execution(* com.hurbao..*.service.*Service.*(..)) " +
+            "|| execution(* com.baomidou.mybatisplus.extension.service.IService.*(..)) " +
+            "|| execution(* com.baomidou.mybatisplus.extension.service.impl.ServiceImpl.*(..))")
     public void pointCut(){
     }
 
