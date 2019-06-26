@@ -44,10 +44,10 @@
             <version>2.1.1.RELEASE</version>
         </dependency>
         <!-- springboot 提供监听的 -->
-        <!--<dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>-->
+        </dependency>
         <!-- redis springboot整合 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
