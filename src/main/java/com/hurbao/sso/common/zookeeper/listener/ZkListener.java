@@ -13,13 +13,20 @@ import org.springframework.stereotype.Component;
 @Component
 public class ZkListener {
 
+
+    @EventListener
+    public void event(Object event){
+        System.out.println("Object 接收到事件：" + event.getClass());
+    }
+
+
     /**
      * 节点更新后
      * @param event
      */
     @EventListener
     public void event(EnvironmentChangeEvent event){
-        System.out.println("MyEventHandle 接收到事件：" + event.getClass());
+        System.out.println("EnvironmentChangeEvent 接收到事件：" + event.getClass());
     }
 
 
@@ -29,7 +36,7 @@ public class ZkListener {
      */
     @EventListener
     public void event(RefreshEvent event){
-        System.out.println("MyEventHandle 接收到事件：" + event.getEventDesc());
-        System.out.println("MyEventHandle 接收到事件：" + event.getSource());
+        System.out.println("RefreshEvent 接收到事件：" + event.getEventDesc());
+        System.out.println("RefreshEvent 接收到事件：" + event.getSource());
     }
 }
