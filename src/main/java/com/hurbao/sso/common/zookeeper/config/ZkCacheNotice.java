@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * 读取zk上cache-notice配置信息，自动刷新
  */
 @Component
-@ConfigurationProperties(prefix ="cache-notice")
+@ConfigurationProperties(prefix ="cache-notice-test")
 public class ZkCacheNotice {
     @Autowired
     CityServiceImpl cityService;
