@@ -18,6 +18,7 @@ import java.lang.reflect.Method;
 @Component
 @Slf4j
 @Aspect
+@Order(-1)
 public class DataSourceAspect {
 
     @Pointcut("execution(* com.hurbao..*.*ServiceImpl.*(..)) " +
