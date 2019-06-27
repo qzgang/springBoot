@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 /**
- * @author
+ * 程序入口
  */
 @SpringBootApplication
 public class Application {
