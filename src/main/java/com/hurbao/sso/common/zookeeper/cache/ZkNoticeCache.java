@@ -11,6 +11,7 @@ import java.util.Map;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
+ * ZkListener 监听刷新
  * 存放节点缓存  /hurbao/conf/cache_notice/
  */
 @Slf4j
