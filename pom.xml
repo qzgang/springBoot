@@ -8,10 +8,10 @@
         <version>2.1.5.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.hurbao.sso</groupId>
-    <artifactId>hrb-sso</artifactId>
+    <groupId>com.hurbao.webframe</groupId>
+    <artifactId>web-frame</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>hrb-sso</name>
+    <name>web-frame</name>
     <url>https://www.hurbao.com</url>
     <packaging>jar</packaging>
 
