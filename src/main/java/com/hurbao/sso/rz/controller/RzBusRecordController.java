@@ -4,7 +4,6 @@ package com.hurbao.sso.rz.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hurbao.sso.common.redis.ICached;
-import com.hurbao.sso.common.zookeeper.config.ZkConfig;
 import com.hurbao.sso.rz.entity.RzBusRecord;
 import com.hurbao.sso.rz.service.RzBusRecordService;
 import lombok.extern.slf4j.Slf4j;
@@ -30,9 +29,6 @@ import java.util.List;
 public class RzBusRecordController {
     @Autowired
     private RzBusRecordService recordService;
-
-    @Autowired
-    ZkConfig zkConfig;
     @Autowired
     ICached iCached;
 
@@ -49,12 +45,6 @@ public class RzBusRecordController {
     public List<RzBusRecord> page(){
         Page page = new Page(1,2);
         return recordService.page(page).getRecords();
-    }
-
-    @GetMapping("/zk")
-    public ZkConfig zk(){
-        log.info("=====");
-        return zkConfig;
     }
 
    @GetMapping("/icache")
