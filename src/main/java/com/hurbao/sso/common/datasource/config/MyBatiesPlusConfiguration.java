@@ -1,12 +1,14 @@
 package com.hurbao.sso.common.datasource.config;
 
+import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
 import com.baomidou.mybatisplus.core.MybatisConfiguration;
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
-import com.baomidou.mybatisplus.extension.plugins.PerformanceInterceptor;
 import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
 import com.hurbao.sso.common.datasource.enums.DataSourceEnum;
 import com.hurbao.sso.common.datasource.multiple.MultipleDataSource;
+import com.hurbao.sso.common.util.AESCryptUtil;
+import com.hurbao.sso.common.zookeeper.cache.ZkProjectCache;
 import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.type.JdbcType;
@@ -16,7 +18,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.Profile;
 
 import javax.sql.DataSource;
 import java.util.HashMap;
@@ -35,7 +36,12 @@ public class MyBatiesPlusConfiguration {
     @Bean(name = "oracleDb")
     @ConfigurationProperties(prefix = "datasource.oracle-db" )
     public DataSource oracleDb() {
-        return DruidDataSourceBuilder.create().build();
+        DruidDataSource druidDataSource =  DruidDataSourceBuilder.create().build();
+        druidDataSource.setUrl(ZkProjectCache.getVal("jdbc.url").replaceFirst(":",":p6spy:"));
+        druidDataSource.setPassword(AESCryptUtil.decryptByKey(ZkProjectCache.getVal("jdbc.password")));
+        druidDataSource.setUsername(AESCryptUtil.decryptByKey(ZkProjectCache.getVal("jdbc.username")));
+        druidDataSource.setDriverClassName("com.p6spy.engine.spy.P6SpyDriver");
+        return druidDataSource;
     }
     /**
      * 数据源mysql
@@ -44,7 +50,12 @@ public class MyBatiesPlusConfiguration {
     @Bean(name = "mysqlDb")
     @ConfigurationProperties(prefix = "datasource.mysql-db" )
     public DataSource mysqlDb() {
-        return DruidDataSourceBuilder.create().build();
+        DruidDataSource druidDataSource =  DruidDataSourceBuilder.create().build();
+        druidDataSource.setUrl(ZkProjectCache.getVal("mysql.jdbc.url").replaceFirst(":",":p6spy:"));
+        druidDataSource.setPassword(AESCryptUtil.decryptByKey(ZkProjectCache.getVal("mysql.jdbc.password")));
+        druidDataSource.setUsername(AESCryptUtil.decryptByKey(ZkProjectCache.getVal("mysql.jdbc.username")));
+        druidDataSource.setDriverClassName("com.p6spy.engine.spy.P6SpyDriver");
+        return druidDataSource;
     }
 
     /**
@@ -98,7 +109,8 @@ public class MyBatiesPlusConfiguration {
         configuration.setCacheEnabled(false);
         sqlSessionFactory.setConfiguration(configuration);
         //设置插件
-        sqlSessionFactory.setPlugins(new Interceptor[]{paginationInterceptor()/*,performanceInterceptor()*/});
+        sqlSessionFactory.setPlugins(new Interceptor[]{paginationInterceptor()
+                /*,performanceInterceptor()*/});
         return sqlSessionFactory.getObject();
     }
 
