@@ -5,27 +5,23 @@ spring:
   main.allow-bean-definition-overriding: true
   datasource.type: com.alibaba.druid.pool.DruidDataSource #多数据源
 
+
 # 引入日志配置文件
 logging.config: classpath:logback.xml
+
 
 # redis配置
 redis:
   cluster:
-    # redis-server默认从zk上读取，zk取不到，才用此此值
-    redis-server: 127.0.0.1:6379
     connection-timeout: 2000
     so-timeout: 3000
     max-redirections: 5
 
+
+
 # 数据源配置
 datasource:
   oracle-db:
-    url: ${config.oracle_jdbc_url}
-    username: ${config.oracle_jdbc_username}
-    password: ${config.oracle_jdbc_password}
-    driver-class-name: com.p6spy.engine.spy.P6SpyDriver
-#    driver-class-name: oracle.jdbc.OracleDriver
-    # driver-class-name: com.mysql.jdbc.Driver
     initialSize: 2
     minIdle: 2
     maxActive: 20
@@ -36,11 +32,6 @@ datasource:
     # 验证连接是否可用，使用的SQL语句
     validationQuery: 'select 1 from dual'
   mysql-db:
-    url: ${config.mysql_jdbc_url}
-    username: ${config.mysql_jdbc_username}
-    password: ${config.mysql_jdbc_password}
-#    driver-class-name: com.mysql.jdbc.Driver
-    driver-class-name: com.p6spy.engine.spy.P6SpyDriver
     initialSize: 3
     minIdle: 3
     maxActive: 30
@@ -50,6 +41,8 @@ datasource:
     testOnBorrow: false
     # 验证连接是否可用，使用的SQL语句
     validationQuery: 'select 1'
+
+
 # Mybatis-plus配置
 mybatis-plus:
   # 如果是放在src/main/java目录下 classpath:/com/hurbao/sso/*/mapper/*Mapper.xml

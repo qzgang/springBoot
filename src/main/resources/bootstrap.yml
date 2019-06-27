@@ -1,7 +1,7 @@
 debug: false
 server:
   port: 8888
-  servlet.context-path: /sso
+#  servlet.context-path: /sso 应用名
 
 spring:
   cloud:
@@ -9,11 +9,11 @@ spring:
       connect-string: @zkServer@
       config:
         failFast: false
-        root: /hurbao
-        defaultContext: conf
+        root: /hurbao/conf
+        defaultContext: cache_notice
         enabled: true
         # 默认值是true, 监控配置变更后是否自动更新，需配合Spring Boot Actuators 使用
         watcher.enabled: true
         profileSeparator: ','
   application:
-    name: /conf/hrb-test
+    name: hrb-app
