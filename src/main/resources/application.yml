@@ -5,10 +5,11 @@ spring:
   main.allow-bean-definition-overriding: true
   datasource.type: com.alibaba.druid.pool.DruidDataSource #多数据源
 
+# ZkNoticeCache 缓存是否开启
+hrb.zknotice.cache.enable: true
 
 # 引入日志配置文件
 logging.config: classpath:logback.xml
-
 
 # redis配置
 redis:
