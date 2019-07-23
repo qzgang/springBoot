@@ -1,16 +1,16 @@
 {
   "groups": [
     {
-      "name": "spring.datasource.druid.db1",
+      "name": "datasource.mysql-db",
       "type": "javax.sql.DataSource",
-      "sourceType": "com.hrb.sso.common.config.MyBatiesPlusConfiguration",
-      "sourceMethod": "db1()"
+      "sourceType": "com.hurbao.sso.common.datasource.config.MyBatiesPlusConfiguration",
+      "sourceMethod": "mysqlDb()"
     },
     {
-      "name": "spring.datasource.druid.db2",
+      "name": "datasource.oracle-db",
       "type": "javax.sql.DataSource",
-      "sourceType": "com.hrb.sso.common.config.MyBatiesPlusConfiguration",
-      "sourceMethod": "db2()"
+      "sourceType": "com.hurbao.sso.common.datasource.config.MyBatiesPlusConfiguration",
+      "sourceMethod": "oracleDb()"
     }
   ],
   "properties": [],
