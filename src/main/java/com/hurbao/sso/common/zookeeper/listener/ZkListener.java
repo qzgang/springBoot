@@ -22,7 +22,7 @@ import static org.apache.curator.framework.recipes.cache.TreeCacheEvent.Type.*;
 @Slf4j
 @Component
 public class ZkListener {
-    @Autowired
+    @Autowired(required = false)
     ZkNoticeCache zkNoticeCache;
     @Autowired
     Environment environment;
@@ -50,11 +50,13 @@ public class ZkListener {
             if(eventType == NODE_ADDED || eventType == NODE_UPDATED) {
                 if(path.startsWith(CACHE_NOTICE_PATH)){
                     String node = path.replaceAll(CACHE_NOTICE_PATH,"");
-                    zkNoticeCache.putNoticeCache(node,value);
-                    if(eventType == NODE_ADDED ){
-                        log.info("===>zookeeper添加缓存path={}，data={}",path,value);
-                    }else{
-                        log.info("===>zookeeper更新缓存path={}，data={}",path,value);
+                    if(zkNoticeCache !=null){
+                        zkNoticeCache.putNoticeCache(node,value);
+                        if(eventType == NODE_ADDED ){
+                            log.info("===>zookeeper添加缓存path={}，data={}",path,value);
+                        }else{
+                            log.info("===>zookeeper更新缓存path={}，data={}",path,value);
+                        }
                     }
                 }
                 if(path.startsWith(CACHE_APP_PATH)){
@@ -72,8 +74,10 @@ public class ZkListener {
             if(eventType == NODE_REMOVED){
                 if(path.startsWith(CACHE_NOTICE_PATH)){
                     String node = path.replaceAll(CACHE_NOTICE_PATH,"");
-                    zkNoticeCache.removeNoticeCache(node);
-                    log.info("===>zookeeper删除缓存path={}",path);
+                    if(zkNoticeCache !=null){
+                        zkNoticeCache.removeNoticeCache(node);
+                        log.info("===>zookeeper删除缓存path={}",path);
+                    }
                 }
                 if(path.startsWith(CACHE_APP_PATH)){
                     String node = path.replaceAll(CACHE_APP_PATH,"");

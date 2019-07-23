@@ -4,6 +4,7 @@ package com.hurbao.sso.common.zookeeper.cache;
 import com.hurbao.sso.sys.service.impl.CityServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
@@ -16,6 +17,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  */
 @Slf4j
 @Component
+@ConditionalOnProperty(prefix="hrb.zknotice.cache",name = "enable",matchIfMissing = true)
 public class ZkNoticeCache {
     @Autowired
     CityServiceImpl cityService;
@@ -24,7 +26,7 @@ public class ZkNoticeCache {
      */
     private  Map<String,String> notice_cache = null;
 
-    private  ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
+    private ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
 
     public void putNoticeCache(String node,String value){
         try {
